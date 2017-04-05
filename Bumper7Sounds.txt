@@ -1,0 +1,21 @@
+/*
+    Programmed by: MakuJ :3
+    This is a free to use script, feel free to use it in your projects, just include this header :3
+    This script will play 7 random sounds when the object/avatar collides with more avatars,
+    the sound files must be named 1.wav, 2.wav, etc.
+*/
+default
+{
+    collision_start(integer num) //When a collision is detected:
+    {      
+         llSensor("", "", AGENT ,1.0, PI); //we call a sensor who's gonna be looking for avatars (not objetcs) in a radial distance (1m) around the scripted prim 
+    }
+     sensor (integer num)
+        {
+             float Scream = llFrand(0.7) * 10; //Frand will return float nums between 0.0 - 0.6, those multiplied by 10 will give 'integer' floats, 1.0, 2.0, etc
+             integer ScreamN = llRound(Scream); //Now casting the number from float to int, so we can use it easily
+              llPlaySound((string) ScreamN, 1); //The number is now a string, and that string is the name of our sound file. llPlaySound("FileName",1) 
+        }
+    
+}
+
